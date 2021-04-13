@@ -1,0 +1,18 @@
+@import '../variables.scss';
+.header {
+  height: 3.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 3%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% - 6%);
+  .logo {
+    color: $primary-color;
+  }
+}

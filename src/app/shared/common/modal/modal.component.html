@@ -1,0 +1,20 @@
+<div class="modalWrapper" #wrapperElem>
+  <div class="modalbackdrop"></div>
+  <div class="modalContentContainer">
+    <div class="modalcontent" #modalContent>
+      <div class="modal-header" *ngIf="modalHeaderTemplate; else defaultHeaderTemplate">
+        <ng-template [ngTemplateOutlet]="modalHeaderTemplate"></ng-template>
+      </div>
+      <ng-template #defaultHeaderTemplate>
+        <div class="modal-header">
+          <button class="bttn close-action" (click)="_closeModal()">
+            <i class="icon icon-times"></i>
+          </button>
+        </div>
+      </ng-template>
+      <div class="modal-body" *ngIf="modalBodyTemplate">
+        <ng-template [ngTemplateOutlet]="modalBodyTemplate"></ng-template>
+      </div>
+    </div>
+  </div>
+</div>

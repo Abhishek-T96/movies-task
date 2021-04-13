@@ -1,0 +1,60 @@
+<ng-container>
+  <div class="container">
+    <div class="movies-listing-wrapper">
+      <ng-container *ngIf="!loading; else loaderTmpl">
+        <ng-container *ngIf="!fetchFailed;else fetchFailTmpl">
+          <div class="search">
+            <input placeholder="Search Movies" type="text" [formControl]="searchControl">
+          </div>
+          <ng-container *ngIf="(listInfo$ | async) as listInfo">
+            <div class="list-body-wrapper">
+              <div class="card-container">
+                <div class="card" *ngFor="let movie of listInfo.results" (click)="openMoviesModal(movie)">
+                  <div class="avatar-container">
+                    <img [src]="movie.imgUrl" alt="">
+                  </div>
+                  <div class="title">{{ movie.title }}</div>
+                  <div *ngIf="movie.genres" class="genres">Genres: <span class="value">{{ movie.genres }}</span></div>
+                  <div *ngIf="movie.description" class="description text-ellipses" [title]="movie.description">Description: <span class="value">{{ movie.description }}</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="pagination">
+              <button class="bttn link-btn" *ngIf="listInfo.previous" (click)="getMovies(listInfo.previous)">Previous</button>
+              <button class="bttn link-btn" *ngIf="listInfo.next" (click)="getMovies(listInfo.next)">Next</button>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+    <ng-template #loaderTmpl>
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+    </ng-template>
+    <ng-template #fetchFailTmpl>
+      <div class="fetchfail">
+        <div>Error occured while fetching Movies</div>
+        <button class="bttn link-btn link-btn-primary" (click)="reFetch()">Try Again</button>
+      </div>
+    </ng-template>
+  </div>
+</ng-container>
+<ng-container *ngIf="selectedMovie" >
+  <movies-modal #moviesModal (closeCb)="_modalClosed()">
+    <ng-template modal-body>
+      <div class="movie-modal">
+        <div class="left">
+          <div class="avatar-container">
+            <img [src]="selectedMovie.imgUrl" alt="">
+          </div>
+        </div>
+        <div class="right">
+          <div class="title">{{ selectedMovie.title }}</div>
+          <div *ngIf="selectedMovie.genres" class="genres">Genres: <span class="value">{{ selectedMovie.genres }}</span></div>
+          <div *ngIf="selectedMovie.description" class="description" [title]="selectedMovie.description">Description: <span class="value">{{ selectedMovie.description }}</span></div>
+        </div>
+      </div>
+    </ng-template>
+  </movies-modal>
+</ng-container>

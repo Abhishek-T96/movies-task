@@ -1,0 +1,24 @@
+<div class="auth-page-container">
+  <div class="auth-form-wrapper">
+    <div class="form-header">
+      Log In
+    </div>
+    <div *ngIf="authError" class="error-block form-control">
+      {{ authError }}
+    </div>
+    <form [formGroup]="authenticationForm" (ngSubmit)="login()">
+      <div class="position-relative">
+        <input #usercontrol placeholder="Username" class="form-control" type="text" formControlName="username">
+        <div *ngIf="usernameControl?.invalid && usernameControl?.touched" class="error-msg">Username is required</div>
+      </div>
+      <div class="position-relative">
+        <div class="pwd-container">
+          <input placeholder="Password" class="form-control" #password [type]="showPwd ? 'text' : 'password'" formControlName="pwd">
+          <button type="button" class="showToggle bttn" (click)="showPwd = !showPwd">{{ !showPwd ? 'Show' : 'Hide' }}</button>
+        </div>
+        <div *ngIf="pwdControl?.invalid && pwdControl?.touched" class="error-msg">Password is required</div>
+      </div>
+      <button class="form-control bttn primary" type="submit" [class.disabled]="loggingIn">Log In</button>
+    </form>
+  </div>
+</div>

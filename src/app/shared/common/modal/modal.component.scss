@@ -1,0 +1,59 @@
+@import'../../../../variables.scss';
+
+.modalbackdrop {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba($bg-color3, 0.8);
+}
+.modalcontent {
+  width: 80%;
+  max-width: 600px;
+  position: fixed;
+  top: 10rem;
+  left: 50%;
+  padding: 3rem;
+  background-color: $bg-color3;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+  transform: translateX(-50%);
+  .modal-header {
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .close-action {
+      height: 100%;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+
+.scaleIn {
+  transform-origin: 0 0 ;
+  animation: scaleInKeyFrame 300ms forwards;
+}
+
+.scaleOut {
+  transform-origin: 0 0 ;
+  animation: scaleOutKeyFrame 300ms forwards;
+}
+
+@keyframes scaleInKeyFrame {
+  from { transform: scale(0) translateX(-50%)}
+  to { transform: scale(1) translateX(-50%)}
+}
+
+
+@keyframes scaleOutKeyFrame {
+  from { transform: scale(1) translateX(-50%)}
+  to { transform: scale(0) translateX(-50%)}
+}

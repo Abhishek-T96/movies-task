@@ -34,7 +34,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "movies",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
