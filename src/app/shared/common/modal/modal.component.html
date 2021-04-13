@@ -1,5 +1,5 @@
 <div class="modalWrapper" #wrapperElem>
-  <div class="modalbackdrop"></div>
+  <div class="modalbackdrop" (click)="_closeModal()"></div>
   <div class="modalContentContainer">
     <div class="modalcontent" #modalContent>
       <div class="modal-header" *ngIf="modalHeaderTemplate; else defaultHeaderTemplate">
