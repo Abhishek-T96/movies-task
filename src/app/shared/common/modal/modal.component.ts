@@ -1,6 +1,5 @@
 import { 
   AfterViewInit, 
-  ChangeDetectorRef, 
   Component, 
   ContentChild, 
   ElementRef, 
@@ -36,10 +35,7 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
   private _bodyElem;
 
-  constructor( 
-    private _renderer: Renderer2, 
-    private _cdr: ChangeDetectorRef 
-  ) { }
+  constructor(private _renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
