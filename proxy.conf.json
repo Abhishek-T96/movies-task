@@ -1,8 +1,0 @@
-{
-  "/v1": {
-    "target": "https://demo.credy.in/api/",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true
-  }
-}

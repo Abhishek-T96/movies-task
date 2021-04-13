@@ -68,6 +68,12 @@
         margin-bottom: 2rem;
         border: 1px solid $border-color1;
         cursor: pointer;
+        @media only screen and ( max-width: 768px ) {
+          width: 45%;
+        }
+        @media only screen and ( max-width: 576px ) {
+          width: 100%;
+        }
         &:hover {
           transform: scale(1.05);
           box-shadow: rgb(0 0 0 / 75%) 0px 3px 10px;
@@ -120,16 +126,26 @@
 
 .movie-modal {
   display: flex;
+  @media only screen and (max-width: 576px) {
+    flex-flow: column;
+  }
   .left {
     margin-right: 1rem;
     width: 30%;
     img {
       width: 100%;
     }
-
+    @media only screen and (max-width: 576px) {
+      width: 60%;
+      margin: 0 auto;
+      margin-bottom: 1rem;
+    }
   }
   .right {
     width: 70%;
+    @media only screen and (max-width: 576px) {
+      width: 100%;
+    }
     .title {
       font-size: 1.5rem;
       line-height: 1.2;
